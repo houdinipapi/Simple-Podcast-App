@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from core.models import Podcast
 
-# Create your views here.
+
+def home(request):
+    return render(request, "index.html")
