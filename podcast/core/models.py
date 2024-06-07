@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
 from django.utils.text import slugify
+from django.utils.timezone import now
 
 
 ALLOWED_EXTENSIONS = ["flac", "ogg", "mp3", "wav"]
@@ -41,6 +42,12 @@ class Podcast(models.Model):
     thumbnail = models.ImageField(
         verbose_name="Podcast Thumbnail",
         upload_to="podcast_thumbnails",
+    )
+
+    uploaded_at = models.DateTimeField(
+        verbose_name="Uploaded At",
+        auto_now_add=True,
+        # default=now,
     )
 
     def save(self, *args, **kwargs):

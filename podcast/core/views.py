@@ -1,6 +1,11 @@
-from django.shortcuts import render
-from core.models import Podcast
+from rest_framework import generics
+from .models import Podcast
+from .serializers import PodcastSerializer
 
 
-def home(request):
-    return render(request, "index.html")
+class PodcastListCreateView(generics.ListCreateAPIView):
+    queryset = Podcast.objects.all()
+    serializer_class = PodcastSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
