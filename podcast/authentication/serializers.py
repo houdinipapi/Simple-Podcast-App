@@ -7,10 +7,10 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth import get_user_model
+from authentication.utils import Util
 
 
 User = get_user_model()
-
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -69,7 +69,7 @@ class LoginSerializer(serializers.ModelSerializer):
             
         attrs["user"] = user
         return attrs
-    
+
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
@@ -112,3 +112,43 @@ class PasswordChangeSeralizer(serializers.Serializer):
         user.set_password(self.validated_data["new_password"])
         user.save()
         return user
+
+
+class ResetPasswordEmailRequestSerializer(serializers.Serializer):
+    email = serializers.EmailField(max_length=255)
+
+    class Meta:
+        fields = ["email"]
+
+    def validate(self, attrs):
+        email = attrs.get("email")
+
+        if User.objects.filter(email=email).exists:
+            user = User.objects.get(email = email)
+            uidb64 = urlsafe_base64_encode(force_bytes(user.id))
+            print("Encoded UID", uidb64)
+            token = PasswordResetTokenGenerator().make_token(user)
+            print("Password Reset Token", token)
+            link = (
+                "http://localhost:8000/api/user/reset-password/"
+                + uidb64
+                + "/"
+                + token
+                + "/"
+            )
+            print("Password Reset Link", link)
+
+            # Send Email
+            body = "Click the following link to reset your password "+link
+            data = {
+                "email_body": body,
+                "to_email": user.email,
+                "email_subject": "Reset your password"
+            }
+            Util.send_email(data)
+            return attrs
+        else:
+            raise serializers.ValidationError({"email": "This email does not exist!"})
+        
+    def save(self, **kwargs):
+        return self.validated_data

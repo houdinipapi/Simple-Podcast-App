@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from authentication.serializers import RegisterSerializer, LoginSerializer, ProfileSerializer, PasswordChangeSeralizer
+from authentication.serializers import RegisterSerializer, LoginSerializer, ProfileSerializer, PasswordChangeSeralizer, ResetPasswordEmailRequestSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from authentication.renderers import UserRenderer
@@ -97,4 +97,19 @@ class PasswordChangeView(APIView):
             return Response({
                 "message": "Password changed successfully!"
             }, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+class ResetPasswordEmailRequestView(APIView):
+    # permission_classes = [AllowAny]
+    renderer_classes = [UserRenderer]
+
+    def post(self, request, format=None):
+        serializer = ResetPasswordEmailRequestSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(
+                {"message": "Password reset email has been sent!"},
+                status=status.HTTP_200_OK,
+            )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
