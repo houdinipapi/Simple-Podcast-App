@@ -22,8 +22,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         }
 
     def validate(self, attrs):
-        email = attrs.get("email", "")
-        username = attrs.get("username", "")
         password = attrs.get("password", "")
         confirm_password = attrs.get("confirm_password", "")
 
@@ -34,4 +32,5 @@ class RegisterSerializer(serializers.ModelSerializer):
         return attrs
 
     def create(self, validated_data):
+        validated_data.pop("confirm_password")
         return User.objects.create_user(**validated_data)

@@ -3,9 +3,11 @@ from rest_framework import status
 from rest_framework.views import APIView
 from authentication.serializers import RegisterSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny
 from authentication.renderers import UserRenderer
-from django.contrib.auth import authenticate
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 def get_tokens_for_user(user):
@@ -17,23 +19,21 @@ def get_tokens_for_user(user):
 
 
 class RegisterView(APIView):
+    permission_classes = [AllowAny]
     serializer_class = RegisterSerializer
     renderer_classes = (UserRenderer,)
 
     def post(self, request, format=None):
-        user = request.data
-        serializer = self.serializer_class(data=user)
+        user_data = request.data
+        serializer = self.serializer_class(data=user_data)
         serializer.is_valid(raise_exception=True)
-        serializer.save()
-        user_data = serializer.data
-        # user = User.objects.get(email=user_data["email"])
+        user = serializer.save()
         tokens = get_tokens_for_user(user)
         return Response(
             {
-                "user": user_data,
+                "user": serializer.data,
                 "tokens": tokens,
-                "message": "User registered successfully!"
+                "message": "User registered successfully!",
             },
-            user_data,
-            status=status.HTTP_201_CREATED
+            status=status.HTTP_201_CREATED,
         )
