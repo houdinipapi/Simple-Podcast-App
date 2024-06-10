@@ -3,6 +3,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react'
 import axios from "axios"
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 
 const SignUpPage = () => {
@@ -72,6 +73,10 @@ const SignUpPage = () => {
             <button type="submit" className="bg-purple-600 text-white py-2 px-4 rounded-lg w-full">
                 Sign up
             </button>
+            <div className="text-center text-white">
+                <p>Already have an account? <Link href="/login" className="text-purple-400">Log in</Link>
+                </p>
+            </div>
         </form>
     </div>
   )

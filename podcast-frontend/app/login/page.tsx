@@ -3,6 +3,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Link from 'next/link';
 
 const LoginPage = () => {
     const [form, setForm] = useState({
@@ -38,7 +39,13 @@ const LoginPage = () => {
       <form onSubmit={handleSubmit} className="bg-gray-800 p-6 rounded-lg">
         <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} className="mb-4 p-2 w-full rounded-lg" />
         <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} className="mb-4 p-2 w-full rounded-lg" />
-        <button type="submit" className="bg-purple-600 text-white py-2 px-4 rounded-lg w-full">Login</button>
+        <button type="submit" className="bg-purple-600 text-white py-2 px-4 rounded-lg w-full">
+            Login
+        </button>
+        <div className="text-center text-white">
+            <p>Don&apos;t have an account? <Link href="/signup" className="text-purple-400">Register</Link>
+            </p>
+        </div>
       </form>
     </div>
   )
