@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from authentication.serializers import RegisterSerializer
+from authentication.serializers import RegisterSerializer, LoginSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny
 from authentication.renderers import UserRenderer
@@ -37,3 +37,34 @@ class RegisterView(APIView):
             },
             status=status.HTTP_201_CREATED,
         )
+
+
+class LoginView(APIView):
+    permission_classes = [AllowAny]
+    serializer_class = LoginSerializer
+    renderer_classes = (UserRenderer,)
+
+    def post(self, request, format=None):
+        user_data = request.data
+        serializer = self.serializer_class(data=user_data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data["user"]
+        tokens = get_tokens_for_user(user)
+        return Response(
+            {
+                "user": {
+                    "email": user.email,
+                    "username": user.username,
+                },
+                "tokens": tokens,
+                "message": "User logged in successfully!",
+            },
+            status=status.HTTP_200_OK,
+       )
+    
+    def get_tokens_for_user(self, user):
+        refresh = RefreshToken.for_user(user)
+        return {
+            "refresh": str(refresh),
+            "access": str(refresh.access_token),
+        }
