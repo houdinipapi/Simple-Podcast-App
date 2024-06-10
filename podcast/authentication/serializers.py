@@ -38,7 +38,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         return User.objects.create_user(**validated_data)
 
 
-class LoginSerializer(serializers.Serializer):
+class LoginSerializer(serializers.ModelSerializer):
     email = serializers.EmailField()
     password = serializers.CharField(
         style={"input_type": "password"},
@@ -64,3 +64,15 @@ class LoginSerializer(serializers.Serializer):
             
         attrs["user"] = user
         return attrs
+    
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["email", "username", "is_active", "is_staff", "is_superuser", "is_admin", "created_at", "updated_at"]
+        read_only_fields = ["email", "is_active", "is_staff", "is_superuser", "is_admin", "created_at", "updated_at"]
+
+    def update(self, instance, validated_data):
+        instance.username = validated_data.get("username", instance.username)
+        instance.save()
+        return instance
