@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from authentication.serializers import RegisterSerializer, LoginSerializer, ProfileSerializer, PasswordChangeSeralizer, ResetPasswordEmailRequestSerializer
+from authentication.serializers import RegisterSerializer, LoginSerializer, ProfileSerializer, PasswordChangeSeralizer, ResetPasswordEmailRequestSerializer, ResetPasswordSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from authentication.renderers import UserRenderer
@@ -68,7 +68,7 @@ class LoginView(APIView):
             "refresh": str(refresh),
             "access": str(refresh.access_token),
         }
-    
+
 
 class ProfileView(APIView):
     permission_classes = [IsAuthenticated]
@@ -85,7 +85,7 @@ class ProfileView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
 
 class PasswordChangeView(APIView):
     permission_classes = [IsAuthenticated]
@@ -98,7 +98,7 @@ class PasswordChangeView(APIView):
                 "message": "Password changed successfully!"
             }, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
 
 class ResetPasswordEmailRequestView(APIView):
     # permission_classes = [AllowAny]
@@ -110,6 +110,27 @@ class ResetPasswordEmailRequestView(APIView):
             serializer.save()
             return Response(
                 {"message": "Password reset email has been sent!"},
+                status=status.HTTP_200_OK,
+            )
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class PasswordResetView(APIView):
+    permission_classes = [AllowAny]
+    renderer_classes = [UserRenderer]
+
+    def post(self, request, uidb64, token):
+        serializer = ResetPasswordSerializer(
+            data=request.data,
+            context={
+                "uidb64": uidb64,
+                "token": token
+            }
+        )
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(
+                {"message": "Password reset successful!"},
                 status=status.HTTP_200_OK,
             )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

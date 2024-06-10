@@ -149,6 +149,51 @@ class ResetPasswordEmailRequestSerializer(serializers.Serializer):
             return attrs
         else:
             raise serializers.ValidationError({"email": "This email does not exist!"})
-        
+
     def save(self, **kwargs):
         return self.validated_data
+
+
+class ResetPasswordSerializer(serializers.Serializer):
+    password = serializers.CharField(
+        style={"input_type": "password"}, max_length=68, min_length=6, write_only=True
+    )
+    confirm_password = serializers.CharField(
+        style={"input_type": "password"}, max_length=68, min_length=6, write_only=True
+    )
+
+    class Meta:
+        fields = ["password", "confirm_password"]
+
+    def validate(self, attrs):
+        try:
+            uid = self.context["uidb64"]
+            token = self.context["token"]
+            uid = urlsafe_base64_decode(uid).decode()
+            user = User.objects.get(pk=uid)
+            if not PasswordResetTokenGenerator().check_token(user, token):
+                raise serializers.ValidationError(
+                    {"token": "Token is not valid or expired"}
+                )
+            if attrs["password"] != attrs["confirm_password"]:
+                raise serializers.ValidationError({"password": "Passwords must match"})
+            return attrs
+        except (
+            TypeError,
+            ValueError,
+            OverflowError,
+            User.DoesNotExist,
+            DjangoUnicodeDecodeError,
+        ):
+            raise serializers.ValidationError(
+                {"token": "Token is not valid or expired"}
+            )
+
+    def save(self, **kwargs):
+        password = self.validated_data["password"]
+        uid = self.context["uidb64"]
+        uid = urlsafe_base64_decode(uid).decode()
+        user = User.objects.get(pk=uid)
+        user.set_password(password)
+        user.save()
+        return user
