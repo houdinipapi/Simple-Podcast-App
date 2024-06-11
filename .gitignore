@@ -1,3 +1,4 @@
 myenv
 .env
 test_email.py
+db.sqlite3
