@@ -8,6 +8,7 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth import get_user_model
 from authentication.utils import Util
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
 User = get_user_model()
@@ -197,3 +198,18 @@ class ResetPasswordSerializer(serializers.Serializer):
         user.set_password(password)
         user.save()
         return user
+    
+
+class LogoutSerializer(serializers.Serializer):
+    refresh = serializers.CharField()
+
+    def validate(self, attrs):
+        self.token = attrs["refresh"]
+        return attrs
+    
+    def save(self, **kwargs):
+        try:
+            token = RefreshToken(self.token)
+            token.blacklist()
+        except Exception as e:
+            self.fail("bad_token")

@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from authentication.serializers import RegisterSerializer, LoginSerializer, ProfileSerializer, PasswordChangeSeralizer, ResetPasswordEmailRequestSerializer, ResetPasswordSerializer
+from authentication.serializers import RegisterSerializer, LoginSerializer, ProfileSerializer, PasswordChangeSeralizer, ResetPasswordEmailRequestSerializer, ResetPasswordSerializer, LogoutSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from authentication.renderers import UserRenderer
@@ -134,3 +134,32 @@ class PasswordResetView(APIView):
                 status=status.HTTP_200_OK,
             )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+    
+    def post(self, request, *args, **kwargs):
+        serializer = LogoutSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(
+                {"message": "User logged out successfully!"},
+                status=status.HTTP_200_OK,
+            )
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+class DeleteAccountView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def delete(Self, request, *args, **kwargs):
+        user = request.user
+        user.delete()
+
+        return Response(
+            {
+                "message": "User account deleted successfully!"
+            },
+            status=status.HTTP_204_NO_CONTENT
+        )
