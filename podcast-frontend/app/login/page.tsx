@@ -42,7 +42,7 @@ const LoginPage = () => {
         <button type="submit" className="bg-purple-600 text-white py-2 px-4 rounded-lg w-full">
             Login
         </button>
-        <div className="text-center text-white">
+        <div className="text-center text-white pt-5">
             <p>Don&apos;t have an account? <Link href="/signup" className="text-purple-400">Register</Link>
             </p>
         </div>

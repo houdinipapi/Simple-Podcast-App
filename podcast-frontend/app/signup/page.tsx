@@ -36,7 +36,7 @@ const SignUpPage = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-gray-900">
         <form onSubmit={handleSubmit} className="bg-gray-800 p-6 rounded-lg">
-            <h1 className="text-3xl text-white font-bold mb-4">Sign up</h1>
+            <h1 className="text-3xl text-white font-bold mb-4 flex justify-center">Sign up</h1>
             <input
                 type="text"
                 name="username"
@@ -73,7 +73,7 @@ const SignUpPage = () => {
             <button type="submit" className="bg-purple-600 text-white py-2 px-4 rounded-lg w-full">
                 Sign up
             </button>
-            <div className="text-center text-white">
+            <div className="text-center text-white pt-5">
                 <p>Already have an account? <Link href="/login" className="text-purple-400">Log in</Link>
                 </p>
             </div>
