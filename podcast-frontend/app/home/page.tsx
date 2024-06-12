@@ -123,54 +123,102 @@ const Home = () => {
 
 
             <div className="bg-gray-800 p-4 rounded-lg">
-              <Image src="https://via.placeholder.com/300" alt="Podcast Title" width={300} height={300} className="w-full h-48 object-cover mb-4 rounded-lg" />
-              <h2 className="text-xl font-bold mb-2">Podcast Title</h2>
-              <p className="text-gray-400">Podcast Description</p>
+              <Image
+                src="https://images.pexels.com/photos/19761840/pexels-photo-19761840/free-photo-of-close-up-of-a-podcast-microphone.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                alt="Podcast Title"
+                width={300}
+                height={300}
+                className="w-full h-48 object-cover mb-4 rounded-lg"
+              />
+              <h2 className="text-xl font-bold mb-2">Lorem Ipsum</h2>
+              <p className="text-gray-400">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Morbi tristique senectus et netus et malesuada fames ac turpis.
+              </p>
               <a href="#" target="" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
                 Listen Now
               </a>
             </div>
 
             <div className="bg-gray-800 p-4 rounded-lg">
-              <Image src="https://via.placeholder.com/300" alt="Podcast Title" width={300} height={300} className="w-full h-48 object-cover mb-4 rounded-lg" />
-              <h2 className="text-xl font-bold mb-2">Podcast Title</h2>
-              <p className="text-gray-400">Podcast Description</p>
+              <Image
+                src="https://images.pexels.com/photos/16183458/pexels-photo-16183458/free-photo-of-close-up-of-vintage-radio.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                alt="Podcast Title"
+                width={300}
+                height={300}
+                className="w-full h-48 object-cover mb-4 rounded-lg"
+              />
+              <h2 className="text-xl font-bold mb-2">Elementum facilisis</h2>
+              <p className="text-gray-400">
+                Elementum facilisis leo vel fringilla est ullamcorper eget nulla facilisi. Pulvinar etiam non quam lacus suspendisse faucibus interdum.
+              </p>
               <a href="#" target="" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
                 Listen Now
               </a>
             </div>
 
             <div className="bg-gray-800 p-4 rounded-lg">
-              <Image src="https://via.placeholder.com/300" alt="Podcast Title" width={300} height={300} className="w-full h-48 object-cover mb-4 rounded-lg" />
-              <h2 className="text-xl font-bold mb-2">Podcast Title</h2>
-              <p className="text-gray-400">Podcast Description</p>
+              <Image
+                src="https://images.pexels.com/photos/484/sound-speaker-radio-microphone.jpg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                alt="Podcast Title"
+                width={300}
+                height={300}
+                className="w-full h-48 object-cover mb-4 rounded-lg"
+              />
+              <h2 className="text-xl font-bold mb-2">Placerat Egestas</h2>
+              <p className="text-gray-400">
+                Placerat in egestas erat imperdiet. Nulla malesuada pellentesque elit eget gravida cum sociis. Et odio pellentesque diam volutpat commodo sed egestas egestas fringilla.
+              </p>
               <a href="#" target="" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
                 Listen Now
               </a>
             </div>
 
             <div className="bg-gray-800 p-4 rounded-lg">
-              <Image src="https://via.placeholder.com/300" alt="Podcast Title" width={300} height={300} className="w-full h-48 object-cover mb-4 rounded-lg" />
-              <h2 className="text-xl font-bold mb-2">Podcast Title</h2>
-              <p className="text-gray-400">Podcast Description</p>
+              <Image
+                src="https://images.pexels.com/photos/226635/pexels-photo-226635.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                alt="Podcast Title"
+                width={300}
+                height={300}
+                className="w-full h-48 object-cover mb-4 rounded-lg"
+              />
+              <h2 className="text-xl font-bold mb-2">Morbi Leo</h2>
+              <p className="text-gray-400">
+                Morbi leo urna molestie at elementum eu facilisis. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Suspendisse faucibus interdum posuere lorem ipsum dolor sit.
+              </p>
               <a href="#" target="" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
                 Listen Now
               </a>
             </div>
 
             <div className="bg-gray-800 p-4 rounded-lg">
-              <Image src="https://via.placeholder.com/300" alt="Podcast Title" width={300} height={300} className="w-full h-48 object-cover mb-4 rounded-lg" />
-              <h2 className="text-xl font-bold mb-2">Podcast Title</h2>
-              <p className="text-gray-400">Podcast Description</p>
+              <Image
+                src="https://images.pexels.com/photos/8546516/pexels-photo-8546516.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                alt="Podcast Title"
+                width={300}
+                height={300}
+                className="w-full h-48 object-cover mb-4 rounded-lg"
+              />
+              <h2 className="text-xl font-bold mb-2">Mauris Nunc</h2>
+              <p className="text-gray-400">
+                Mauris nunc congue nisi vitae suscipit tellus mauris a. Aliquam eleifend mi in nulla posuere sollicitudin. Sed cras ornare arcu dui vivamus arcu felis bibendum ut. Senectus et netus et malesuada fames.
+              </p>
               <a href="#" target="" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
                 Listen Now
               </a>
             </div>
 
             <div className="bg-gray-800 p-4 rounded-lg">
-              <Image src="https://via.placeholder.com/300" alt="Podcast Title" width={300} height={300} className="w-full h-48 object-cover mb-4 rounded-lg" />
-              <h2 className="text-xl font-bold mb-2">Podcast Title</h2>
-              <p className="text-gray-400">Podcast Description</p>
+              <Image
+                src="https://images.pexels.com/photos/7600897/pexels-photo-7600897.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load"
+                alt="Podcast Title"
+                width={300}
+                height={300}
+                className="w-full h-48 object-cover mb-4 rounded-lg"
+              />
+              <h2 className="text-xl font-bold mb-2">Massa Eget</h2>
+              <p className="text-gray-400">
+                Massa eget egestas purus viverra accumsan in. Malesuada pellentesque elit eget gravida cum sociis natoque penatibus. Praesent semper feugiat nibh sed pulvinar proin gravida.
+              </p>
               <a href="#" target="" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
                 Listen Now
               </a>

@@ -142,7 +142,7 @@ const ProfilePage = () => {
   return (
     <Navbar>
         <div className="min-h-screen bg-gray-900 text-white p-8">
-            <h1 className="text-4xl font-bold mb-8">Profile Page</h1>
+            <h1 className="text-4xl font-bold mb-8 text-center">Profile Page</h1>
             <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
                 <h2 className="text-2xl font-semibold mb-4">User Information</h2>
                 <p className="mb-2"><strong>Email:</strong> {userData.email}</p>
