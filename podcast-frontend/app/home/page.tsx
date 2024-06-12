@@ -113,18 +113,18 @@ const Home = () => {
               <img src={podcast.image} alt={podcast.title} className="w-full h-48 object-cover mb-4 rounded-lg" />
               <h2 className="text-xl font-bold mb-2">{podcast.title}</h2>
               <p className="text-gray-400">{podcast.description}</p>
-              <a href={podcast.url} target="_blank" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
+              <a href={podcast.url} target="" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
                 Listen Now
               </a>
             </div>
           ))} */}
-          
+
 
           <div className="bg-gray-800 p-4 rounded-lg">
             <Image src="https://via.placeholder.com/300" alt="Podcast Title" width={300} height={300} className="w-full h-48 object-cover mb-4 rounded-lg" />
             <h2 className="text-xl font-bold mb-2">Podcast Title</h2>
             <p className="text-gray-400">Podcast Description</p>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
+            <a href="#" target="" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
               Listen Now
             </a>
           </div>
@@ -133,7 +133,7 @@ const Home = () => {
             <Image src="https://via.placeholder.com/300" alt="Podcast Title" width={300} height={300} className="w-full h-48 object-cover mb-4 rounded-lg" />
             <h2 className="text-xl font-bold mb-2">Podcast Title</h2>
             <p className="text-gray-400">Podcast Description</p>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
+            <a href="#" target="" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
               Listen Now
             </a>
           </div>
@@ -142,7 +142,7 @@ const Home = () => {
             <Image src="https://via.placeholder.com/300" alt="Podcast Title" width={300} height={300} className="w-full h-48 object-cover mb-4 rounded-lg" />
             <h2 className="text-xl font-bold mb-2">Podcast Title</h2>
             <p className="text-gray-400">Podcast Description</p>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
+            <a href="#" target="" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
               Listen Now
             </a>
           </div>
@@ -151,7 +151,7 @@ const Home = () => {
             <Image src="https://via.placeholder.com/300" alt="Podcast Title" width={300} height={300} className="w-full h-48 object-cover mb-4 rounded-lg" />
             <h2 className="text-xl font-bold mb-2">Podcast Title</h2>
             <p className="text-gray-400">Podcast Description</p>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
+            <a href="#" target="" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
               Listen Now
             </a>
           </div>
@@ -160,7 +160,7 @@ const Home = () => {
             <Image src="https://via.placeholder.com/300" alt="Podcast Title" width={300} height={300} className="w-full h-48 object-cover mb-4 rounded-lg" />
             <h2 className="text-xl font-bold mb-2">Podcast Title</h2>
             <p className="text-gray-400">Podcast Description</p>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
+            <a href="#" target="" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
               Listen Now
             </a>
           </div>
@@ -169,7 +169,7 @@ const Home = () => {
             <Image src="https://via.placeholder.com/300" alt="Podcast Title" width={300} height={300} className="w-full h-48 object-cover mb-4 rounded-lg" />
             <h2 className="text-xl font-bold mb-2">Podcast Title</h2>
             <p className="text-gray-400">Podcast Description</p>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
+            <a href="#" target="" rel="noopener noreferrer" className="text-purple-500 hover:underline mt-4 block">
               Listen Now
             </a>
           </div>
