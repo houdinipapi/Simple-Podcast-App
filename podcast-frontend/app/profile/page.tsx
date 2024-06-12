@@ -110,6 +110,13 @@ const ProfilePage = () => {
 
 
     const handleAccountDelete = async () => {
+
+        const confirmDelete = window.confirm("Are you sure you want to delete your account? This action cannot be undone!");
+
+        if (!confirmDelete) {
+            return; // If the user cancels, do nothing
+        }
+
         try {
             const response = await axios.delete("http://127.0.0.1:8000/api/auth/delete-account/", {
                 headers: {
