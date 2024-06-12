@@ -5,6 +5,7 @@ import axios from "axios";
 // import router from 'next/router';
 // import { useRouter } from 'next/router';
 import { useRouter } from "next/navigation"
+import Navbar from '@/components/Navbar';
 
 const ProfilePage = () => {
 
@@ -139,6 +140,7 @@ const ProfilePage = () => {
 
 
   return (
+    <Navbar>
         <div className="min-h-screen bg-gray-900 text-white p-8">
             <h1 className="text-4xl font-bold mb-8">Profile Page</h1>
             <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
@@ -199,6 +201,7 @@ const ProfilePage = () => {
                 </button>
             </div>
         </div>
+    </Navbar>
     );
 };
 
