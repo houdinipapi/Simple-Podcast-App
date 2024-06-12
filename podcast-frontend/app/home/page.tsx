@@ -63,7 +63,7 @@ const Home = () => {
         <ul className="flex space-x-4">
           <li><Link href="/home" className="text-white hover:text-purple-500">Home</Link></li>
           <li><Link href="/about" className="text-white hover:text-purple-500">About</Link></li>
-          <li><Link href="/features" className="text-white hover:text-purple-500">Features</Link></li>
+          <li><Link href="/profile" className="text-white hover:text-purple-500">Profile</Link></li>
           <li>
             <button
               onClick={() => setModalOpen(true)}
